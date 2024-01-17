@@ -70,7 +70,6 @@ def get_shades_of_blue(n):
 def animate_CA(initial_grid, steps, interval):
     """Animate the cellular automata, updating time step and cell values."""
     
-    # Replace with your actual function or define the color shades manually
     colors = get_shades_of_blue(20) 
     cmap = LinearSegmentedColormap.from_list("custom_blue", colors, N=256)
 
@@ -87,6 +86,7 @@ def animate_CA(initial_grid, steps, interval):
     # Create text objects for each cell
     text = [[ax.text(j, i, '', ha='center', va='center', color='black') for j in range(grid.shape[1])] for i in range(grid.shape[0])]
 
+    averages = []
     def update(frames):
         nonlocal grid
         grid = time_step(grid)  
@@ -101,20 +101,39 @@ def animate_CA(initial_grid, steps, interval):
                 text[i][j].set_color(text_color)
                 text[i][j].set_visible(bool(val))  # Show text only for non-zero values
 
+        #average dropsize
+        non_zero_elements = np.count_nonzero(grid)
+        average_size = np.sum(grid) / non_zero_elements if non_zero_elements else 0
+        averages.append(int(average_size))
+        print("hi")
+
         ax.set_title(f"Animated cloud")
         return [matrix] + [txt for row in text for txt in row]
 
-    ani = FuncAnimation(fig, update, frames=steps, interval=interval, blit=True, repeat=False)
+    ani = FuncAnimation(fig, update, frames=steps-1, interval=interval, blit=False, repeat=False) #Average step -1 because the first frame is a step and thus average dropletsize
     plt.show()
+    return averages
+
+
+def plot_averages(averages, steps):
+    """Plot the average size of grid values over a given number of steps."""
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(steps), averages, marker='o', linestyle='-', color='b')
+    plt.title("Average Size of Droplets Over Time")
+    plt.xlabel("Step")
+    plt.ylabel("Average Size")
+    plt.grid(True)
+    plt.xticks(range(0, steps, max(1, steps // 10)))  
+    plt.show()
+
 
 grid = initialize_grid(5, 6, 0.5)
 steps = 15
-interval = 2000
-animate_CA(grid,steps,interval)
+interval = 1000
+averages = animate_CA(grid,steps,interval)
+plot_averages(averages, steps)
 
-# print(grid)
-# new_grid = time_step(grid)
-# print(new_grid)
 
 
 
