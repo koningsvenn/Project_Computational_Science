@@ -67,12 +67,11 @@ def get_shades_of_blue(n):
     end = np.array([25, 25, 112]) / 255  # midnightblue
     return [(start + (end - start) * i / (n - 1)).tolist() for i in range(n)]
 
-
-def animate_CA(initial_grid, steps=10, interval=2000):
+def animate_CA(initial_grid, steps, interval):
     """Animate the cellular automata, updating time step and cell values."""
-
-    # generate 15 shades of blue to show droplet size, want maybe numbers instead...
-    colors = get_shades_of_blue(20)
+    
+    # Replace with your actual function or define the color shades manually
+    colors = get_shades_of_blue(20) 
     cmap = LinearSegmentedColormap.from_list("custom_blue", colors, N=256)
 
     fig, ax = plt.subplots(figsize=(6, 5))
@@ -85,31 +84,32 @@ def animate_CA(initial_grid, steps=10, interval=2000):
     grid = np.copy(initial_grid)
     matrix = ax.matshow(grid, cmap=cmap)
 
-    # gunction to update the plot
+    # Create text objects for each cell
+    text = [[ax.text(j, i, '', ha='center', va='center', color='black') for j in range(grid.shape[1])] for i in range(grid.shape[0])]
+
     def update(frames):
         nonlocal grid
-        grid = time_step(grid)
+        grid = time_step(grid)  
         matrix.set_array(grid)
 
-        # clear previous text (values)
-        [t.remove() for t in ax.texts]
-        # add new text (values) for each cell
-        for (i, j), val in np.ndenumerate(grid):
-            if val:  # only show non-zero values
-                text_color = 'black' if val < 3 else 'white'  # doesnt work yet, it updates text values each update but somehow doesnt show 
-                ax.text(j, i, int(val), ha='center', va='center', color=text_color)
+        # Update text for each cell
+        for i in range(grid.shape[0]):
+            for j in range(grid.shape[1]):
+                val = grid[i, j]
+                text_color = 'white' if val > 2 else 'black'  # Make values of dropletsize white or black for contrast
+                text[i][j].set_text(f'{int(val)}' if val else '')
+                text[i][j].set_color(text_color)
+                text[i][j].set_visible(bool(val))  # Show text only for non-zero values
 
-        ax.set_title(f"Time Step: {frames + 1}")
-        return [matrix]
+        ax.set_title(f"Animated cloud")
+        return [matrix] + [txt for row in text for txt in row]
 
     ani = FuncAnimation(fig, update, frames=steps, interval=interval, blit=True, repeat=False)
     plt.show()
 
-
-    
 grid = initialize_grid(5, 6, 0.5)
-steps = 10
-interval = 1000
+steps = 15
+interval = 2000
 animate_CA(grid,steps,interval)
 
 # print(grid)
