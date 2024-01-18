@@ -29,21 +29,12 @@ def initialize_grid(height, width, humidity):
 
 def wind(height, width, wind_direction):
     """initialize a grid with wind directions, directions: up, down, left, right"""
-    #chance of random wind direction
-    p = 0.3
-    #possible directions
-    directions = ['up', 'down', 'left', 'right']
-   
     #empty grid
     wind = np.zeros((height, width), dtype='<U5')
     #fill with the chosen direction and add some variation for random effects
     for m in range(height):
         for n in range(width):
-            #randomize with some small chance p
-            if random.uniform() < p:
-                wind[m,n] = random.choice(directions)
-            else:
-                wind[m,n] = wind_direction
+            wind[m,n] = wind_direction
     
     return wind
 
@@ -51,6 +42,10 @@ def time_step_wind(grid, wind):
     """Perform a time step where the values move based on wind direction and merge."""
     height, width = grid.shape
     new_grid = np.zeros_like(grid)  # Initialize a new grid for the updated state
+    #chance of random movement
+    p = 0.3
+    #direction options
+    directions = ['up', 'down', 'left', 'right']
 
     # Loop over all cells
     for m in range(height):
@@ -59,7 +54,9 @@ def time_step_wind(grid, wind):
             if grid[m, n] != 0:
                 #get the wind direction from the wind grid(von Neumann neighborhood r=1)
                 direction = wind[m, n]
-
+                if random.uniform() < p:
+                    direction = random.choice(directions)
+                
                 # calculate new coordinates based on direction
                 # using % operator to keep it within the system
                 if direction == 'up':
