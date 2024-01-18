@@ -105,7 +105,6 @@ def animate_CA(initial_grid, steps, interval):
         non_zero_elements = np.count_nonzero(grid)
         average_size = np.sum(grid) / non_zero_elements if non_zero_elements else 0
         averages.append(int(average_size))
-        print("hi")
 
         ax.set_title(f"Animated cloud")
         return [matrix] + [txt for row in text for txt in row]
