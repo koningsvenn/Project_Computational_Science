@@ -3,7 +3,9 @@ import numpy.random as random
 import matplotlib.pyplot as plt 
 from matplotlib.animation import FuncAnimation
 from matplotlib.colors import LinearSegmentedColormap
-
+import pandas as pd
+import datetime
+import os
 
 """still decide on humidity levels and appropriate drop sizes"""
 def initialize_grid(height, width, fall_heigth, humidity):
@@ -40,16 +42,24 @@ def wind(height, width, fall_heigth,wind_direction):
     
     return wind
 
-def time_step_wind(grid, wind, rain_count, fall_heigth):
+def time_step_wind(grid, wind, rain_count, fall_heigth,probablility_new_drop,probability_split_drop):
     """Perform a time step where the values move based on wind direction and merge."""
     height, width = grid.shape
     new_grid = np.zeros_like(grid)  # Initialize a new grid for the updated state
     #drop size that will cause it to become rain
     max_size = 10
 
+    # data that gets returned
+    total_drops = 0
+    max_drop_size = 0
+
     # Loop over all cells
     for m in range(height):
         for n in range(width):
+            if grid[m, n] > 0:
+                total_drops += 1
+                max_drop_size = int(max(max_drop_size, grid[m, n]))
+
             # If there is a non-zero value
             if grid[m, n] != 0:
                 #check the drop size
@@ -68,15 +78,13 @@ def time_step_wind(grid, wind, rain_count, fall_heigth):
                         # move and merge in the new grid
                         new_grid[m_new, n_new] += grid[m, n]
             
-            #add new small drops 
-            probablility_new_drop = 0.0008   
+
             #if the position is empty and inside the cloud area
             if grid[m, n] == 0 and m < height - fall_heigth:
                 if random.rand() < probablility_new_drop:
                     new_grid[m, n] = 1
             
-            #split big drops
-            probability_split_drop = 0.01
+
             #if the drop is large and inside the cloud area
             if grid[m, n] > 10 and m < height - fall_heigth:
                 if random.rand() < probability_split_drop:
@@ -87,7 +95,7 @@ def time_step_wind(grid, wind, rain_count, fall_heigth):
                         new_grid[m, n-1] = grid[m, n-1]+ 1/2*grid[m, n]
                     print(m, n)
 
-    return new_grid, rain_count
+    return new_grid, rain_count, total_drops,max_drop_size
 
 def move(m, n):
     """move the drops according to wind and random movements"""
@@ -189,7 +197,7 @@ def get_shades_of_blue(n):
     end = np.array([25, 25, 112]) / 255  # midnightblue
     return [(start + (end - start) * i / (n - 1)).tolist() for i in range(n)]
 
-def animate_CA(initial_grid, wind, steps, interval, fall_heigth):
+def animate_CA(initial_grid, wind, steps, interval, fall_heigth,probablility_new_drop,probability_split_drop):
     """Animate the cellular automata, updating time step and cell values."""
     
     colors = get_shades_of_blue(20) 
@@ -212,13 +220,15 @@ def animate_CA(initial_grid, wind, steps, interval, fall_heigth):
     rain_count = 0
     
     averages = []
+    raind_count_list = []
+    total_drops_list = []
+    max_drop_size_list = []
     def update(frames):
         nonlocal grid
         nonlocal rain_count
 
-        grid, rain_count = time_step_wind(grid, wind, fall_heigth, rain_count)  
+        grid, rain_count,total_drops,max_drop_size = time_step_wind(grid, wind,  rain_count,fall_heigth,probablility_new_drop,probability_split_drop)  
         matrix.set_array(grid)
-        print(rain_count)
         # Update text for each cell
         for i in range(grid.shape[0]):
             for j in range(grid.shape[1]):
@@ -232,36 +242,46 @@ def animate_CA(initial_grid, wind, steps, interval, fall_heigth):
         non_zero_elements = np.count_nonzero(grid)
         average_size = np.sum(grid) / non_zero_elements if non_zero_elements else 0
         averages.append(int(average_size))
+        raind_count_list.append(rain_count)
+        total_drops_list.append(total_drops)
+        max_drop_size_list.append(max_drop_size)
 
         ax.set_title(f"Animated cloud")
         return [matrix] + [txt for row in text for txt in row]
 
     ani = FuncAnimation(fig, update, frames=steps-1, interval=interval, blit=False, repeat=False) #Average step -1 because the first frame is a step and thus average dropletsize
     plt.show()
-    return averages
+    return averages, raind_count_list,total_drops_list,max_drop_size_list
 
-
-def plot_averages(averages, steps):
-    """Plot the average size of grid values over a given number of steps."""
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(range(steps), averages, marker='o', linestyle='-', color='b')
-    plt.title("Average Size of Droplets Over Time")
-    plt.xlabel("Step")
-    plt.ylabel("Average Size")
-    plt.grid(True)
-    plt.xticks(range(0, steps, max(1, steps // 10)))  
-    plt.show()
 
 
 height = 8
 width = 10
 fall_heigth = 1
+probablility_new_drop = 0.0008   
+probability_split_drop = 0.01
+steps = 15
+interval = 1000
 
 grid = initialize_grid(height, width, fall_heigth, 0.5)
 wind = wind(height, width, fall_heigth, 'left')
-steps = 15
-interval = 1000
-averages = animate_CA(grid,wind,steps,interval,fall_heigth)
-plot_averages(averages, steps)
+averages,rain_count_list,total_drops_list,max_drop_size_list = animate_CA(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
 
+data = {
+    'Average droplet size': averages,
+    'Rain Count': rain_count_list,
+    'Total Drops': total_drops_list,
+    'Max Drop Size': max_drop_size_list
+}
+df = pd.DataFrame(data)
+
+# Get current date and time
+current_datetime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+# Parameters for filename 
+param_str = f"fh{fall_heigth}_pnd{probablility_new_drop}_psd{probability_split_drop}"
+
+# Create filename and export
+filename = f"./exported_data/{current_datetime}_{param_str}.csv"
+os.makedirs(os.path.dirname(filename), exist_ok=True)
+df.to_csv(filename, index_label='Time Step')
