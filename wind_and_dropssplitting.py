@@ -262,7 +262,7 @@ def plot_averages(averages, steps):
 
 height = 8
 width = 10
-fall_heigth = 5
+fall_heigth = 1
 
 grid = initialize_grid(height, width, fall_heigth, 0.5)
 wind = wind(height, width, fall_heigth, 'left')
