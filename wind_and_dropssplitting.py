@@ -77,7 +77,8 @@ def time_step_wind(grid, wind, rain_count, fall_heigth):
             
             #split big drops
             probability_split_drop = 0.01
-            if grid[m, n] > 10:
+            #if the drop is large and inside the cloud area
+            if grid[m, n] > 10 and m < height - fall_heigth:
                 if random.rand() < probability_split_drop:
                     new_grid[m, n] = 1/2*grid[m, n]
                     if n == 0:
