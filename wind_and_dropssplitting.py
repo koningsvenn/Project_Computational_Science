@@ -129,6 +129,7 @@ def move(m, n):
 
     return m_new, n_new
 
+    return new_grid
 
 def time_step(grid):
     """Perform a time step where the values move in a random direction and merge."""
@@ -182,7 +183,6 @@ def time_step(grid):
 
 
 """animation and plotting"""
-
 def get_shades_of_blue(n):
     """Generate n shades of blue."""
     start = np.array([173, 216, 230]) / 255  # lightblue

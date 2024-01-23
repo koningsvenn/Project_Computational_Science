@@ -113,10 +113,7 @@ def time_step(grid):
 
     return new_grid
 
-
-
 """animation and plotting"""
-
 def get_shades_of_blue(n):
     """Generate n shades of blue."""
     start = np.array([173, 216, 230]) / 255  # lightblue
@@ -183,8 +180,8 @@ def plot_averages(averages, steps):
     plt.show()
 
 
-grid = initialize_grid(5, 6, 0.5)
-wind = wind(5, 6, 'up')
+grid = initialize_grid(20, 20, 0.5)
+wind = wind(20, 20, 'up')
 steps = 15
 interval = 1000
 averages = animate_CA(grid,wind,steps,interval)
