@@ -119,18 +119,12 @@ def move(m, n):
             m_new = (m + 1)
         n_new = n
     elif direction == 'left':
-        #boundary
-        if n == 0:
-            n_new = n + 1
-        else:
-            n_new = n - 1
+       #periodic boundary
+        n_new = (n - 1) % width
         m_new = m
     else:  # direction == 'right'
-        #boundary
-        if n == width - 1:
-            n_new = n - 1
-        else:
-            n_new = n + 1
+        #periodic boundary
+        n_new = (n + 1) % width
     m_new = m
 
     return m_new, n_new
