@@ -25,6 +25,6 @@ Instructions on how to install and set up the project. Include:
 
 
 ## Credits
-- Member 1: Iris Mittelstadt
+- Member 1: Iris Mittelstädt
 - Member 2: Sven Haarbrink
 - Member 3: Veerle Verbeek
