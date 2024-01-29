@@ -1,14 +1,44 @@
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
 
+# Read CSV file
+filename = '2024-01-29_14-02-50_fh1_pnd0.0008_psd0.01'
+df = pd.read_csv(f'exported_data/{filename}.csv')
 
-def plot_averages(averages, steps):
-    """Plot the average size of grid values over a given number of steps."""
-
-    plt.figure(figsize=(10, 6))
-    plt.plot(range(steps), averages, marker='o', linestyle='-', color='b')
-    plt.title("Average Size of Droplets Over Time")
-    plt.xlabel("Step")
-    plt.ylabel("Average Size")
+# Function to plot the time series of each variable
+def plot_time_series(df):
+    plt.figure(figsize=(12, 8))
+    for column in df.columns[1:]:
+        plt.plot(df['Time Step'], df[column], marker='o', linestyle='-', label=column)
+    plt.title("Time Series Analysis")
+    plt.xlabel("Time Step")
+    plt.ylabel("Values")
+    plt.legend()
     plt.grid(True)
-    plt.xticks(range(0, steps, max(1, steps // 10)))  
     plt.show()
+
+# Function to plot histograms for each variable
+def plot_histograms(df):
+    df.hist(bins=15, figsize=(12, 8))
+    plt.suptitle("Histograms of Variables")
+    plt.show()
+
+# Function to plot scatter plots between pairs of variables
+def plot_scatter_plots(df):
+    sns.pairplot(df, diag_kind='kde')
+    plt.suptitle("Scatter and Distribution Plots")
+    plt.show()
+
+# Function to plot a correlation matrix
+def plot_correlation_matrix(df):
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(df.corr(), annot=True, cmap='coolwarm')
+    plt.title("Correlation Matrix")
+    plt.show()
+
+# Call the functions
+plot_time_series(df)
+plot_histograms(df)
+plot_scatter_plots(df)
+plot_correlation_matrix(df)

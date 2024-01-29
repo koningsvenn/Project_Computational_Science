@@ -96,7 +96,7 @@ def time_step_wind(grid, wind, fall_heigth,probablility_new_drop,probability_spl
                         new_grid[m, n+1] = grid[m, n+1]+ 1/2*grid[m, n]
                     else:
                         new_grid[m, n-1] = grid[m, n-1]+ 1/2*grid[m, n]
-                    print(m, n)
+                    #print(m, n)
     
     return new_grid, rain_count, total_drops, max_drop_size
 
@@ -252,13 +252,13 @@ def collect_data(averages, rain_count_list, total_drops_list, max_drop_size_list
     df.to_csv(filename, index_label='Time Step')
 
 """input parameters"""
-height = 8
-width = 10
+height = 50
+width = 50
 fall_heigth = 1
 probablility_new_drop = 0.0008   
 probability_split_drop = 0.01
-steps = 15
-interval = 1000
+steps = 1000
+interval = 100
 humidity = 0.5
 wind_direction = 'left'
 
@@ -267,6 +267,6 @@ grid = initialize_grid(height, width, fall_heigth, humidity)
 wind = wind(height, width, fall_heigth, wind_direction)
 
 """animation"""
-averages,rain_count_list,total_drops_list,max_drop_size_list = animate_CA(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
+averages,rain_count_list,total_drops_list,max_drop_size_list = run_simulation(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
 collect_data(averages, rain_count_list, total_drops_list, max_drop_size_list)
 
