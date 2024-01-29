@@ -27,7 +27,7 @@ wind_and_dropssplitting.py usage:
 - Either "run_simulation()" or "animate_CA()" can be used 
 - "run_simulation()" simulates without showing the Cellular Automata Animation
 - "animate_CA()" simulates while showing the Cellular Automata Animation
-- $wind_and_dropssplitting.py 
+- $python wind_and_dropssplitting.py 
 
 
 
