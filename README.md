@@ -13,15 +13,22 @@ A brief description of what this project does and who it's for
 - Goals and objectives of the project
 
 ## Installation
-Instructions on how to install and set up the project. Include:
-- Pre-requisites: List any libraries, tools, or frameworks needed
-- Step-by-step guide on how to install the project
-- Any environment setup if necessary
+Once you are in the directory containing the requirements.txt file, run the following command:
+$pip install -r requirements.txt
+
 
 ## Usage
-- How to run the project
-- Examples of how to use the project
-- Any specific data requirements or configurations
+data_visualization.py usage:
+- Add the csv-filename into the "filename" variable
+- $python data_visualization.py
+
+wind_and_dropssplitting.py usage:
+- On the bottom input parameters can be changed accordingly
+- Either "run_simulation()" or "animate_CA()" can be used 
+- "run_simulation()" simulates without showing the Cellular Automata Animation
+- "animate_CA()" simulates while showing the Cellular Automata Animation
+- $wind_and_dropssplitting.py 
+
 
 
 ## Credits

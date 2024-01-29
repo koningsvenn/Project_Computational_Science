@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+print(sns.__version__)
 
 # Read CSV file
 filename = '2024-01-29_14-02-50_fh1_pnd0.0008_psd0.01'
