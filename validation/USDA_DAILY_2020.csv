@@ -1,4 +1,4 @@
-Rain_TOT,RH_MIN,RH_MAX,RH_Average
+Rain_TOT,RH_low,RH_high,RH_Average
 0,41.82,78.96,60.39
 0,47.17,85.9,66.535
 1.02,65.49,100,82.745

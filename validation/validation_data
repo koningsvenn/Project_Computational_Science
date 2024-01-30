@@ -1,27 +1,28 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+#DataFrame(columns=['Rain_TOT', 'RH_low', 'RH_high', 'RH_Average'])
 
-#make lists of different seasons
-list_rainfall_winter = pd.DataFrame()
-list_rainfall_spring = pd.DataFrame()
-list_rainfall_summer = pd.DataFrame()
-list_rainfall_fall = pd.DataFrame()
+#make dataframes for different seasons
+rainfall_winter = pd.read_csv('USDA_DAILY_2019.csv').iloc[:91]
+rainfall_spring = pd.read_csv('USDA_DAILY_2019.csv').iloc[92:181]
+rainfall_summer = pd.read_csv('USDA_DAILY_2019.csv').iloc[182:273]
+rainfall_fall = pd.read_csv('USDA_DAILY_2019.csv').iloc[274:]
 
-#read data of every year and append to lists
-for i in range(16, 24):
+
+#read data of every year and append to dataframe
+for i in range(20, 24):
     weather_AR_USA = pd.read_csv(f'USDA_DAILY_20{i}.csv')
     
-    rainfall = weather_AR_USA[['Rain_TOT']]
-    list_rainfall_winter[f'20{i}'] = rainfall[:91]
-    # list_rainfall_spring.append(list_rainfall[92:181])
-    # list_rainfall_summer.append(list_rainfall[182:273])
-    # list_rainfall_fall.append(list_rainfall[274:])
-    
-print(list_rainfall_winter)
+    rainfall_winter = pd.concat([rainfall_winter, weather_AR_USA.iloc[:91]], ignore_index=True)
+    rainfall_spring = pd.concat([rainfall_spring, weather_AR_USA.iloc[92:181]])
+    rainfall_summer = pd.concat([rainfall_summer, weather_AR_USA.iloc[182:273]])
+    rainfall_fall = pd.concat([rainfall_fall, weather_AR_USA.iloc[274:]])
+
+
 #average out data and do standard deviation
-average_rainfall_winter = list_rainfall_winter.mean(axis = 1)
-std_rainfall_winter = list_rainfall_winter.std(axis = 1)
+average_rainfall_winter = np.mean(rainfall_winter['Rain_TOT'])
+std_rainfall_winter = np.std(rainfall_winter['Rain_TOT'])
 print(average_rainfall_winter, std_rainfall_winter)
 
 
