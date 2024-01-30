@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+#make lists of different seasons
+list_rainfall_winter = pd.DataFrame()
+list_rainfall_spring = pd.DataFrame()
+list_rainfall_summer = pd.DataFrame()
+list_rainfall_fall = pd.DataFrame()
+
+#read data of every year and append to lists
+for i in range(16, 24):
+    weather_AR_USA = pd.read_csv(f'USDA_DAILY_20{i}.csv')
+    
+    rainfall = weather_AR_USA[['Rain_TOT']]
+    list_rainfall_winter[f'20{i}'] = rainfall[:91]
+    # list_rainfall_spring.append(list_rainfall[92:181])
+    # list_rainfall_summer.append(list_rainfall[182:273])
+    # list_rainfall_fall.append(list_rainfall[274:])
+    
+print(list_rainfall_winter)
+#average out data and do standard deviation
+average_rainfall_winter = list_rainfall_winter.mean(axis = 1)
+std_rainfall_winter = list_rainfall_winter.std(axis = 1)
+print(average_rainfall_winter, std_rainfall_winter)
+
+
