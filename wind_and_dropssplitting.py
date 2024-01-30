@@ -31,7 +31,7 @@ def initialize_grid(height, width, fall_heigth, humidity):
         
     return grid 
 
-def wind(height, width, fall_heigth,wind_direction):
+def initialize_wind(height, width, fall_heigth,wind_direction):
     """initialize a grid with wind directions, directions: up, down, left, right"""
     #empty grid
     wind = np.zeros((height + fall_heigth, width), dtype='<U5')
@@ -205,7 +205,7 @@ def animate_CA(initial_grid, wind, steps, interval, fall_heigth,probablility_new
 
 """run experiments and collect data"""
 
-def run_simulation(initial_grid, wind, steps, interval, fall_heigth,probablility_new_drop,probability_split_drop):
+def run_simulation(initial_grid, wind, steps, fall_heigth,probablility_new_drop,probability_split_drop):
     """run a cloud simulation without animation"""
     #set up the grid
     grid = np.copy(initial_grid)
@@ -251,6 +251,28 @@ def collect_data(averages, rain_count_list, total_drops_list, max_drop_size_list
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     df.to_csv(filename, index_label='Time Step')
 
+def run_experiment(height,width,humidity,wind_direction,steps,fall_heigth,probablility_new_drop,probability_split_drop):
+    """run a few simulations and take the averages"""
+    grid = initialize_grid(height, width, fall_heigth, humidity)
+    wind = initialize_wind(height, width, fall_heigth, wind_direction)
+
+    rain_mean_list = []
+    size_mean_list = []
+
+    n = 20
+    for i in range(n):
+        averages,rain_count_list,total_drops_list,max_drop_size_list = run_simulation(grid,wind,steps,fall_heigth,probablility_new_drop,probability_split_drop)
+        rain_mean_list.append(np.mean(rain_count_list))
+        size_mean_list.append(np.mean(averages))
+
+    rain_mean = np.mean(rain_mean_list)
+    rain_std = np.std(rain_mean_list)
+    size_mean = np.mean(size_mean_list)
+    size_std = np.std(size_mean_list)
+    
+    return rain_mean, rain_std, size_mean, size_std
+
+
 """input parameters"""
 height = 50
 width = 50
@@ -264,9 +286,42 @@ wind_direction = 'left'
 
 """set up grid and wind"""
 grid = initialize_grid(height, width, fall_heigth, humidity)
-wind = wind(height, width, fall_heigth, wind_direction)
+wind = initialize_wind(height, width, fall_heigth, wind_direction)
 
 """animation"""
-averages,rain_count_list,total_drops_list,max_drop_size_list = run_simulation(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
-collect_data(averages, rain_count_list, total_drops_list, max_drop_size_list)
+# averages,rain_count_list,total_drops_list,max_drop_size_list = animate_CA(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
+# collect_data(averages, rain_count_list, total_drops_list, max_drop_size_list)
 
+"""simulate"""
+#humidity range
+humidities = np.arange(0.05, 1, 0.1)
+#lists to store outcomes
+rain_means = []
+rain_stds = []
+size_means = []
+size_stds = []
+
+#simulate for each
+for i, humidity in enumerate(humidities):
+    #updates
+    print(f'{i}/{len(humidities)}: humidity = {humidity:.2f}')
+    rain_mean, rain_std, size_mean, size_std = run_experiment(height, width, humidity, wind_direction, steps, fall_heigth, probablility_new_drop, probability_split_drop)
+    rain_means.append(rain_mean)
+    rain_stds.append(rain_std)
+    size_means.append(size_mean)
+    size_stds.append(size_std)
+
+#plot
+plt.figure()
+plt.errorbar(humidities, rain_means, yerr=rain_stds, ecolor='orange')
+plt.xlabel('relative humidity')
+plt.ylabel('average rainfall')
+plt.title('average rainfall per relative humidity level')
+plt.savefig('figures/rainfall_humidity')
+
+plt.figure()
+plt.errorbar(humidities, size_means, yerr=rain_stds, ecolor='orange')
+plt.xlabel('relative humidity')
+plt.ylabel('average drop size')
+plt.title('average drop size per relative humidity level')
+plt.savefig('figures/dropsize_humidity')
