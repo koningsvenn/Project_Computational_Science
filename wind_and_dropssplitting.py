@@ -209,7 +209,6 @@ def plot_humidities(humidities, y, y_std,axis_name):
     plt.errorbar(humidities, y, yerr=y_std, ecolor='orange')
     plt.xlabel('relative humidity')
     plt.ylabel(f'average {axis_name}')
-    plt.title(f'average {axis_name} per relative humidity level')
     plt.savefig(f'figures/{axis_name}_humidity')
 
 """run experiments and collect data"""
@@ -263,7 +262,7 @@ def run_experiment(height,width,humidity,wind_direction,steps,fall_heigth,probab
     total_mean_list = []
     max_drop_mean_list = []
 
-    n = 20
+    n = 40
     for i in range(n):
         averages,rain_count_list,total_drops_list,max_drop_size_list = run_simulation(grid,wind,steps,fall_heigth,probablility_new_drop,probability_split_drop)
         rain_mean_list.append(np.mean(rain_count_list))
