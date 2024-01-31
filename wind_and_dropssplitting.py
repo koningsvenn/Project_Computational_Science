@@ -203,12 +203,12 @@ def animate_CA(initial_grid, wind, steps, interval, fall_heigth,probablility_new
     plt.show()
     return averages, raind_count_list,total_drops_list,max_drop_size_list
 
-def plot_humidities(humidities, y, y_std,axis_name):
+def plot_humidities(humidities, y, y_std,axis_name, unit):
     """plot the outcomes of the simulation against the humidities"""
     plt.figure()
     plt.errorbar(humidities, y, yerr=y_std, ecolor='orange')
     plt.xlabel('relative humidity')
-    plt.ylabel(f'average {axis_name}')
+    plt.ylabel(f'average {axis_name} [{unit}]')
     plt.savefig(f'figures/{axis_name}_humidity')
 
 """run experiments and collect data"""
@@ -351,8 +351,8 @@ data = {
 collect_data(data)
 
 #plot
-plot_humidities(humidities, rain_means, rain_stds, 'rainfall')
-plot_humidities(humidities, size_means, size_stds, 'drop size')
-plot_humidities(humidities, total_means, total_stds, 'total drops')
-plot_humidities(humidities, max_drop_means, max_drop_stds, 'max drop size')
+plot_humidities(humidities, rain_means, rain_stds, 'rainfall', 'drops/time-step')
+plot_humidities(humidities, size_means, size_stds, 'drop size', '/time-step')
+plot_humidities(humidities, total_means, total_stds, 'total drops', '/time-step')
+plot_humidities(humidities, max_drop_means, max_drop_stds, 'max drop size', '/time-step')
 

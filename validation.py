@@ -24,3 +24,17 @@ for season, ax in zip(seasons, axs.ravel()):
     ax.plot(humidity[season], a*humidity[season]+b, linestyle='--', linewidth=2)
 
 plt.savefig(f'figures/validation')
+
+#plot only one season
+for season in seasons:
+    plt.figure()
+    plt.scatter(humidity[season], rain[season], label=season)
+    plt.xlabel('relative humidity')
+    plt.ylabel('rainfall [mm]')
+
+    #best fit
+    a, b = np.polyfit(humidity[season], rain[season], 1)
+    plt.plot(humidity[season], a*humidity[season]+b, linestyle='--', linewidth=2)
+
+    plt.savefig(f'figures/validation_{season}')
+
