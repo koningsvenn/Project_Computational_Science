@@ -1,0 +1,43 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+rainfall = pd.read_csv('rainfall-in-by-month.csv')
+humidity = pd.read_csv('average-relative-humidity-by-month (1).csv')
+
+#seasons in Bahrein are summer from April to October and winter from November to March
+
+#discribe winter months
+winter_months = ['November', 'December', 'January', 'February', 'March']
+
+#use only winter months from the data
+winter_rainfall = rainfall[rainfall['Month'].isin(winter_months)]
+winter_humidity = humidity[humidity['Month'].isin(winter_months)]
+
+#get the mean and standarddeviation
+mean_rainfall_winter = np.mean(winter_rainfall['Value'])
+std_rainfall_winter = np.std(winter_rainfall['Value'])
+
+mean_humidity_winter = np.mean(winter_humidity.loc[winter_humidity['Sub-Indicator'] == 'Mean', 'Value'])
+std_humidity_winter = np.std(winter_humidity.loc[winter_humidity['Sub-Indicator'] == 'Mean', 'Value'])
+
+print('rainfall winter:', mean_rainfall_winter, std_rainfall_winter)
+print('humidity winter:', mean_humidity_winter, std_humidity_winter)
+
+#discribe summer months
+summer_months = ['April', 'May', 'June', 'July', 'August', 'September', 'October']
+
+#use only summer months from the data
+summer_rainfall = rainfall[rainfall['Month'].isin(summer_months)]
+summer_humidity = humidity[humidity['Month'].isin(summer_months)]
+
+#get the mean and standarddeviation
+mean_rainfall_summer = np.mean(summer_rainfall['Value'])
+std_rainfall_summer = np.std(summer_rainfall['Value'])
+
+mean_humidity_summer = np.mean(summer_humidity.loc[summer_humidity['Sub-Indicator'] == 'Mean', 'Value'])
+std_humidity_summer = np.std(summer_humidity.loc[summer_humidity['Sub-Indicator'] == 'Mean', 'Value'])
+
+print('rainfall summer:', mean_rainfall_summer, std_rainfall_summer)
+print('humidity summer:', mean_humidity_summer, std_humidity_summer)
+
