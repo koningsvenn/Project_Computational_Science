@@ -1,0 +1,196 @@
+﻿Year,Month,شهر,Indicator,المؤشر,Sub-Indicator,المؤشر الفرعي,Value
+2018,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,61.0
+2018,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,42.0
+2018,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,47.0
+2018,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,52.0
+2018,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,45.0
+2018,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,35.0
+2018,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,25.0
+2018,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,40.0
+2018,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,56.0
+2018,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,80.0
+2018,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,68.0
+2018,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,63.0
+2018,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,78.0
+2018,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,73.0
+2018,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,79.0
+2018,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,79.0
+2019,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,65.0
+2019,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,54.0
+2019,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,56.0
+2019,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,49.0
+2019,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,30.0
+2019,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,28.0
+2019,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,50.0
+2019,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,76.0
+2019,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,72.0
+2020,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,64.0
+2020,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,44.0
+2020,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,50.0
+2020,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,55.0
+2020,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,56.0
+2020,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,45.0
+2020,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,40.0
+2020,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,26.0
+2020,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,30.0
+2020,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,27.0
+2020,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,52.0
+2020,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,80.0
+2020,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,79.0
+2020,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,70.0
+2020,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,69.0
+2020,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,70.0
+2021,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,66.0
+2021,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,69.0
+2021,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,51.0
+2021,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,51.0
+2021,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,54.0
+2021,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,61.0
+2021,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,49.0
+2021,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,28.0
+2021,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,31.0
+2021,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,51.0
+2021,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,82.0
+2021,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,68.0
+2021,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,62.0
+2021,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,71.0
+2021,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,80.0
+2021,-,-,Annual Average,المتوسط السنوي,Mean,المتوسط,55.25
+2021,-,-,Annual Average,المتوسط السنوي,Mean Minimum,متوسط الصغرى,35.75
+2022,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,64.0
+2022,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,45.0
+2022,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,57.0
+2022,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,56.0
+2022,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,58.0
+2022,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,65.0
+2022,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,51.0
+2022,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,43.0
+2022,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,21.0
+2022,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,33.0
+2022,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,40.0
+2022,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,66.0
+2022,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,74.0
+2022,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,72.0
+2022,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,79.0
+2022,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,77.0
+2018,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,67.0
+2018,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,46.0
+2018,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,59.0
+2018,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,67.0
+2018,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,25.0
+2018,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,28.0
+2018,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,42.0
+2018,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,54.0
+2018,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,83.0
+2018,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,75.0
+2018,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,67.0
+2018,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,71.0
+2018,-,-,Annual Average,المتوسط السنوي,Mean Minimum,متوسط الصغرى,37.333333333333336
+2019,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,35.0
+2019,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,40.0
+2019,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,78.0
+2019,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,79.0
+2019,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,66.0
+2019,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,69.0
+2019,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,77.0
+2019,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,70.0
+2019,-,-,Annual Average,المتوسط السنوي,Mean,المتوسط,55.666666666666664
+2020,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,62.0
+2020,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,55.0
+2020,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,47.0
+2020,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,51.0
+2020,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,60.0
+2020,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,66.0
+2020,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,26.0
+2020,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,28.0
+2020,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,40.0
+2020,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,74.0
+2020,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,78.0
+2020,-,-,Annual Average,المتوسط السنوي,Mean,المتوسط,56.166666666666664
+2020,-,-,Annual Average,المتوسط السنوي,Mean Minimum,متوسط الصغرى,36.5
+2021,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,55.0
+2021,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,53.0
+2021,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,26.0
+2021,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,41.0
+2021,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,67.0
+2021,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,70.0
+2021,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,70.0
+2021,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,77.0
+2021,-,-,Annual Average,المتوسط السنوي,Mean Maximum,متوسط العظمـى,73.08333333333333
+2022,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,62.0
+2022,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,36.0
+2022,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,37.0
+2022,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,52.0
+2022,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,80.0
+2022,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,74.0
+2022,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,70.0
+2022,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,73.0
+2022,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,74.0
+2022,-,-,Annual Average,المتوسط السنوي,Mean,المتوسط,56.083333333333336
+2018,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,53.0
+2018,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,53.0
+2018,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,63.0
+2018,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,69.0
+2018,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,39.0
+2018,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,28.0
+2018,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,31.0
+2018,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,72.0
+2018,-,-,Annual Average,المتوسط السنوي,Mean,المتوسط,56.583333333333336
+2018,-,-,Annual Average,المتوسط السنوي,Mean Maximum,متوسط العظمـى,74.0
+2019,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,65.0
+2019,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,60.0
+2019,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,41.0
+2019,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,41.0
+2019,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,47.0
+2019,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,52.0
+2019,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,59.0
+2019,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,61.0
+2019,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,67.0
+2019,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,47.0
+2019,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,41.0
+2019,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,33.0
+2019,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,22.0
+2019,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,22.0
+2019,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,43.0
+2019,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,64.0
+2019,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,64.0
+2019,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,75.0
+2019,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,80.0
+2019,-,-,Annual Average,المتوسط السنوي,Mean Minimum,متوسط الصغرى,36.666666666666664
+2019,-,-,Annual Average,المتوسط السنوي,Mean Maximum,متوسط العظمـى,72.5
+2020,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,64.0
+2020,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,47.0
+2020,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,36.0
+2020,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,41.0
+2020,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,81.0
+2020,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,72.0
+2020,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,65.0
+2020,July,يوليــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,71.0
+2020,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,73.0
+2020,-,-,Annual Average,المتوسط السنوي,Mean Maximum,متوسط العظمـى,73.5
+2021,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,45.0
+2021,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,37.0
+2021,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,47.0
+2021,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,61.0
+2021,December,ديسمبــر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,66.0
+2021,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,34.0
+2021,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,22.0
+2021,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,16.0
+2021,September,سبتمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,35.0
+2021,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,43.0
+2021,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,80.0
+2021,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,74.0
+2021,October,أكتوبـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,76.0
+2022,January,ينايـر,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,67.0
+2022,March,مــارس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,55.0
+2022,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,43.0
+2022,June,يونيــو,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,44.0
+2022,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean,المتوسط,57.0
+2022,April,أبريــل,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,24.0
+2022,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,28.0
+2022,August,أغسطـس,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,36.0
+2022,November,نوفمبـر,Relative Humidity,الرطوبة النسبية,Mean Minimum,متوسط الصغرى,39.0
+2022,February,فبرايـر,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,82.0
+2022,May,مايـــو,Relative Humidity,الرطوبة النسبية,Mean Maximum,متوسط العظمـى,61.0
+2022,-,-,Annual Average,المتوسط السنوي,Mean Minimum,متوسط الصغرى,36.666666666666664
+2022,-,-,Annual Average,المتوسط السنوي,Mean Maximum,متوسط العظمـى,73.5

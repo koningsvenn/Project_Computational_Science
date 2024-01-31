@@ -1,0 +1,13 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+rainfall = pd.read_csv('rainfall-in-by-month.csv')
+humidity = pd.read_csv('average-relative-humidity-by-month (1).csv')
+
+mean_rainfall = np.mean(rainfall['Value'])
+std_rainfall = np.std(rainfall['Value'])
+mean_humidity = np.mean(humidity.loc[humidity['Sub-Indicator'] == 'Mean', 'Value'])
+std_humidity = np.std(humidity.loc[humidity['Sub-Indicator'] == 'Mean', 'Value'])
+print('rainfall:', mean_rainfall, std_rainfall)
+print('humidity:', mean_humidity, std_humidity)
