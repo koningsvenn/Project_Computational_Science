@@ -9,7 +9,6 @@ rainfall_spring = pd.read_csv('USDA_DAILY_2019.csv').iloc[92:181]
 rainfall_summer = pd.read_csv('USDA_DAILY_2019.csv').iloc[182:273]
 rainfall_fall = pd.read_csv('USDA_DAILY_2019.csv').iloc[274:]
 
-
 #read data of every year and append to dataframe
 for i in range(20, 24):
     weather_AR_USA = pd.read_csv(f'USDA_DAILY_20{i}.csv')
@@ -21,8 +20,14 @@ for i in range(20, 24):
 
 
 #average out data and do standard deviation
-average_rainfall_winter = np.mean(rainfall_winter['Rain_TOT'])
-std_rainfall_winter = np.std(rainfall_winter['Rain_TOT'])
-print(average_rainfall_winter, std_rainfall_winter)
+list_seasons = ['winter', 'spring', 'summer', 'fall']
+for season in list_seasons:
+    average_rainfall = np.mean(getattr(locals()[f'rainfall_{season}'], 'Rain_TOT'))
+    std_rainfall = np.std(getattr(locals()[f'rainfall_{season}'], 'Rain_TOT'))
+
+    average_RH = np.mean(getattr(locals()[f'rainfall_{season}'], 'RH_Average'))
+    std_RH = np.std(getattr(locals()[f'rainfall_{season}'], 'RH_Average'))
+    print(f'{season}:', average_rainfall, std_rainfall)
+    print(f'{season}:', average_RH, std_RH)
 
 
