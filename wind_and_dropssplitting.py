@@ -254,12 +254,15 @@ def run_experiment(height,width,humidity,wind_direction,steps,fall_heigth,probab
     #run 40 simulations for each humidity
     n = 40
     for i in range(n):
+        #one simulation
         averages,rain_count_list,total_drops_list,max_drop_size_list = run_simulation(grid,wind,steps,fall_heigth,probablility_new_drop,probability_split_drop)
+        #add average outcomes to lists
         rain_mean_list.append(np.mean(rain_count_list))
         size_mean_list.append(np.mean(averages))
         total_mean_list.append(np.mean(total_drops_list))
         max_drop_mean_list.append(np.mean(max_drop_size_list))
 
+    #average and standard deviation of the 40 simulations
     rain_mean = np.mean(rain_mean_list)
     rain_std = np.std(rain_mean_list)
     size_mean = np.mean(size_mean_list)
@@ -284,78 +287,81 @@ def collect_data(data):
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     df.to_csv(filename, index=False)
 
+if __name__ == '__main__':
+   
+    """input parameters"""
+    height = 50
+    width = 50
+    fall_heigth = 1
+    probablility_new_drop = 0.0008   
+    probability_split_drop = 0.01
+    steps = 1000
+    interval = 100
+    humidity = 0.5
+    wind_direction = 'left'
 
-"""input parameters"""
-height = 50
-width = 50
-fall_heigth = 1
-probablility_new_drop = 0.0008   
-probability_split_drop = 0.01
-steps = 1000
-interval = 100
-humidity = 0.5
-wind_direction = 'left'
+    """set up grid and wind"""
+    grid = initialize_grid(height, width, fall_heigth, humidity)
+    wind = initialize_wind(height, width, fall_heigth, wind_direction)
 
-"""set up grid and wind"""
-grid = initialize_grid(height, width, fall_heigth, humidity)
-wind = initialize_wind(height, width, fall_heigth, wind_direction)
+    """animation"""
+    # averages,rain_count_list,total_drops_list,max_drop_size_list = animate_CA(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
+    # data = {
+    #     'Time_step': range(steps),
+    #     'Average droplet size': averages,
+    #     'Rain Count': rain_count_list,
+    #     'Total Drops': total_drops_list,
+    #     'Max Drop Size': max_drop_size_list
+    #     }
+    # collect_data(data)
 
-"""animation"""
-# averages,rain_count_list,total_drops_list,max_drop_size_list = animate_CA(grid,wind,steps,interval,fall_heigth,probablility_new_drop,probability_split_drop)
-# data = {
-#     'Time_step': range(steps),
-#     'Average droplet size': averages,
-#     'Rain Count': rain_count_list,
-#     'Total Drops': total_drops_list,
-#     'Max Drop Size': max_drop_size_list
-#     }
-# collect_data(data)
+    """run experiments for a range of humidities"""
+    #humidity range
+    humidities = np.arange(0.05, 1, 0.1)
+    #lists to store outcomes
+    rain_means = []
+    rain_stds = []
+    size_means = []
+    size_stds = []
+    total_means = []
+    total_stds = []
+    max_drop_means = []
+    max_drop_stds = []
 
-"""simulate"""
-#humidity range
-humidities = np.arange(0.05, 1, 0.1)
-#lists to store outcomes
-rain_means = []
-rain_stds = []
-size_means = []
-size_stds = []
-total_means = []
-total_stds = []
-max_drop_means = []
-max_drop_stds = []
+    #simulate for each humidity
+    for i, humidity in enumerate(humidities):
+        #updates
+        print(f'{i+1}/{len(humidities)}: humidity = {humidity:.2f}')
+        #run the experiment
+        rain_mean, rain_std, size_mean, size_std, total_mean, total_std, max_drop_mean, max_drop_std = run_experiment(height, width, humidity, wind_direction, steps, fall_heigth, probablility_new_drop, probability_split_drop)
+        
+        #add data to lists
+        rain_means.append(rain_mean)
+        rain_stds.append(rain_std)
+        size_means.append(size_mean)
+        size_stds.append(size_std)
+        total_means.append(total_mean)
+        total_stds.append(total_std)
+        max_drop_means.append(max_drop_mean)
+        max_drop_stds.append(max_drop_std)
 
-#simulate for each
-for i, humidity in enumerate(humidities):
-    #updates
-    print(f'{i+1}/{len(humidities)}: humidity = {humidity:.2f}')
-    rain_mean, rain_std, size_mean, size_std, total_mean, total_std, max_drop_mean, max_drop_std = run_experiment(height, width, humidity, wind_direction, steps, fall_heigth, probablility_new_drop, probability_split_drop)
-    #add data to lists
-    rain_means.append(rain_mean)
-    rain_stds.append(rain_std)
-    size_means.append(size_mean)
-    size_stds.append(size_std)
-    total_means.append(total_mean)
-    total_stds.append(total_std)
-    max_drop_means.append(max_drop_mean)
-    max_drop_stds.append(max_drop_std)
+    #collect and save data
+    data = {
+        'Humidities': humidities,
+        'Rain_mean': rain_means,
+        'Rain_std': rain_stds,
+        'Size_mean': size_means,
+        'Size_std': size_stds,
+        'Total_drops_mean': total_means,
+        'Total_drops_std': total_stds,
+        'Max_drop_mean': max_drop_means,
+        'Max_drop_std': max_drop_stds
+        }
+    collect_data(data)
 
-#collect and save data
-data = {
-    'Humidities': humidities,
-    'Rain_mean': rain_means,
-    'Rain_std': rain_stds,
-    'Size_mean': size_means,
-    'Size_std': size_stds,
-    'Total_drops_mean': total_means,
-    'Total_drops_std': total_stds,
-    'Max_drop_mean': max_drop_means,
-    'Max_drop_std': max_drop_stds
-    }
-collect_data(data)
-
-#plot
-plot_humidities(humidities, rain_means, rain_stds, 'rainfall', 'drops/time-step')
-plot_humidities(humidities, size_means, size_stds, 'drop size', '/time-step')
-plot_humidities(humidities, total_means, total_stds, 'total drops', '/time-step')
-plot_humidities(humidities, max_drop_means, max_drop_stds, 'max drop size', '/time-step')
+    #plot
+    plot_humidities(humidities, rain_means, rain_stds, 'rainfall', 'drops/time-step')
+    plot_humidities(humidities, size_means, size_stds, 'drop size', '/time-step')
+    plot_humidities(humidities, total_means, total_stds, 'total drops', '/time-step')
+    plot_humidities(humidities, max_drop_means, max_drop_stds, 'max drop size', '/time-step')
 
