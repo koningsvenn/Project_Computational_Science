@@ -7,7 +7,8 @@ import pandas as pd
 import datetime
 import os
 
-"""set up the"""
+
+"""set up the grid"""
 def initialize_grid(height, width, fall_heigth, humidity):
     """create a height x width grid with zeros representing empty cells or integers 
     to represent droplet size"""
@@ -35,12 +36,13 @@ def initialize_wind(height, width, fall_heigth,wind_direction):
     """initialize a grid with wind directions, directions: up, down, left, right"""
     #empty grid
     wind = np.zeros((height + fall_heigth, width), dtype='<U5')
-    #fill with the chosen direction and add some variation for random effects
+    #fill with the chosen direction
     for m in range(height):
         for n in range(width):
             wind[m,n] = wind_direction
     
     return wind
+
 
 """Time steps and movement"""
 
@@ -59,14 +61,13 @@ def time_step_wind(grid, wind, fall_heigth,probablility_new_drop,probability_spl
     # Loop over all cells
     for m in range(height):
         for n in range(width):
-            if grid[m, n] > 0:
+            if grid[m, n] != 0:     #if there is a drop in de cell
+                #get data
                 total_drops += 1
                 max_drop_size = int(max(max_drop_size, grid[m, n]))
 
-            # If there is a non-zero value
-            if grid[m, n] != 0:
                 #check the drop size
-                if grid[m, n] < max_size:
+                if grid[m, n] < max_size:   #less than the max/rain size
                     m_new, n_new = move(m, n)
                     # move and merge in the new grid
                     new_grid[m_new, n_new] += grid[m, n]
@@ -80,50 +81,47 @@ def time_step_wind(grid, wind, fall_heigth,probablility_new_drop,probability_spl
                         m_new = m + 1
                         # move and merge in the new grid
                         new_grid[m_new, n_new] += grid[m, n]
-            
 
             #if the position is empty and inside the cloud area
             if grid[m, n] == 0 and m < height - fall_heigth:
-                if random.rand() < probablility_new_drop:
+                if random.rand() < probablility_new_drop:      #a new drop appear with some probability
                     new_grid[m, n] = 1
             
-
             #if the drop is large and inside the cloud area
             if grid[m, n] > 10 and m < height - fall_heigth:
-                if random.rand() < probability_split_drop:
+                if random.rand() < probability_split_drop:      #drops split with some probability (surface tension)
                     new_grid[m, n] = 1/2*grid[m, n]
                     if n == 0:
                         new_grid[m, n+1] = grid[m, n+1]+ 1/2*grid[m, n]
                     else:
                         new_grid[m, n-1] = grid[m, n-1]+ 1/2*grid[m, n]
-                    #print(m, n)
     
     return new_grid, rain_count, total_drops, max_drop_size
 
 def move(m, n):
     """move the drops according to wind and random movements"""
-    #chance of random movement
+    #chance of random movement (thermal movement)
     p = 0.5
     #direction options
     directions = ['up', 'down', 'left', 'right']
     
     #get the wind direction from the wind grid(von Neumann neighborhood r=1)
     direction = wind[m, n]
-    #the drop will move randomly with some chance p
+    #the drop will move randomly with some chance p (thermal movement)
     if random.uniform() < p:
         direction = random.choice(directions)
 
     # calculate new coordinates based on direction
-    # using % operator to keep it within the system
+    # using % operator to keep it within the system for periodic boundaries
     if direction == 'up':
-        #boundary
+        #hard boundary
         if m == 0:
             m_new = m + 1
         else:
             m_new = m - 1
         n_new = n
     elif direction == 'down':
-        #boundary
+        #hard boundary
         if  m == height - 1:
             m_new = m - 1
         else:
@@ -140,7 +138,6 @@ def move(m, n):
 
     return m_new, n_new
 
-    return new_grid
 
 """animation and plotting"""
 
@@ -152,7 +149,7 @@ def get_shades_of_blue(n):
 
 def animate_CA(initial_grid, wind, steps, interval, fall_heigth,probablility_new_drop,probability_split_drop):
     """Animate the cellular automata, updating time step and cell values."""
-    
+    #set up colors and figure for the animation
     colors = get_shades_of_blue(20) 
     cmap = LinearSegmentedColormap.from_list("custom_blue", colors, N=256)
 
@@ -174,9 +171,11 @@ def animate_CA(initial_grid, wind, steps, interval, fall_heigth,probablility_new
     raind_count_list = []
     total_drops_list = []
     max_drop_size_list = []
+    
     def update(frames):
         nonlocal grid
 
+        #perform a time-step
         grid, rain_count,total_drops,max_drop_size = time_step_wind(grid, wind,fall_heigth, probablility_new_drop,probability_split_drop)  
         matrix.set_array(grid)
         # Update text for each cell
@@ -188,7 +187,7 @@ def animate_CA(initial_grid, wind, steps, interval, fall_heigth,probablility_new
                 text[i][j].set_color(text_color)
                 text[i][j].set_visible(bool(val))  # Show text only for non-zero values
 
-        #average dropsize
+        #update data lists
         non_zero_elements = np.count_nonzero(grid)
         average_size = np.sum(grid) / non_zero_elements if non_zero_elements else 0
         averages.append(int(average_size))
@@ -211,6 +210,7 @@ def plot_humidities(humidities, y, y_std,axis_name, unit):
     plt.ylabel(f'average {axis_name} [{unit}]')
     plt.savefig(f'figures/{axis_name}_humidity')
 
+
 """run experiments and collect data"""
 
 def run_simulation(initial_grid, wind, steps, fall_heigth,probablility_new_drop,probability_split_drop):
@@ -224,8 +224,9 @@ def run_simulation(initial_grid, wind, steps, fall_heigth,probablility_new_drop,
     total_drops_list = []
     max_drop_size_list = []
 
-    #run steps amount of time steps
+    #run steps amount of time_steps
     for i in range(steps):
+        #perform a time-step
         grid, rain_count,total_drops,max_drop_size = time_step_wind(grid, wind,fall_heigth, probablility_new_drop,probability_split_drop)
         #average dropsize
         non_zero_elements = np.count_nonzero(grid)
@@ -238,30 +239,19 @@ def run_simulation(initial_grid, wind, steps, fall_heigth,probablility_new_drop,
     
     return averages, raind_count_list,total_drops_list,max_drop_size_list
 
-
-def collect_data(data):
-    df = pd.DataFrame(data)
-    # Get current date and time
-    current_datetime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-
-    # Parameters for filename 
-    param_str = f"fh{fall_heigth}_pnd{probablility_new_drop}_psd{probability_split_drop}"
-
-    # Create filename and export
-    filename = f"./exported_data/{current_datetime}_{param_str}.csv"
-    os.makedirs(os.path.dirname(filename), exist_ok=True)
-    df.to_csv(filename, index=False)
-
 def run_experiment(height,width,humidity,wind_direction,steps,fall_heigth,probablility_new_drop,probability_split_drop):
     """run a few simulations and take the averages"""
+    #set up the grid and wind field
     grid = initialize_grid(height, width, fall_heigth, humidity)
     wind = initialize_wind(height, width, fall_heigth, wind_direction)
 
+    #lists to collect averages
     rain_mean_list = []
     size_mean_list = []
     total_mean_list = []
     max_drop_mean_list = []
 
+    #run 40 simulations for each humidity
     n = 40
     for i in range(n):
         averages,rain_count_list,total_drops_list,max_drop_size_list = run_simulation(grid,wind,steps,fall_heigth,probablility_new_drop,probability_split_drop)
@@ -280,6 +270,19 @@ def run_experiment(height,width,humidity,wind_direction,steps,fall_heigth,probab
     max_drop_std = np.std(max_drop_mean_list)
     
     return rain_mean, rain_std, size_mean, size_std, total_mean, total_std, max_drop_mean, max_drop_std
+
+def collect_data(data):
+    df = pd.DataFrame(data)
+    # Get current date and time
+    current_datetime = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    # Parameters for filename 
+    param_str = f"fh{fall_heigth}_pnd{probablility_new_drop}_psd{probability_split_drop}"
+
+    # Create filename and export
+    filename = f"./exported_data/{current_datetime}_{param_str}.csv"
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    df.to_csv(filename, index=False)
 
 
 """input parameters"""
