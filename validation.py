@@ -32,6 +32,7 @@ for season in seasons:
     plt.scatter(humidity[season], rain[season], label=season)
     plt.xlabel('relative humidity')
     plt.ylabel('rainfall [mm]')
+    plt.title(season)
 
     #plot linear fit
     a, b = np.polyfit(humidity[season], rain[season], 1)
